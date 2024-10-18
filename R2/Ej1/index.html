@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <script src="./logica.js"></script>
+
+    <!--  Este bloque de codigo alerta al usuario de un fallo en la ejecución
+            de JavaScript -->
+    <noscript>
+        El navegador no puede ejecutar scripts que hay en la página. <br>
+        Te recomendamos que <b> actualices tu navegador </b> o que <b> actives JavaScript </b> para poder ver la página correctamente.
+    </noscript>
+
+    
+    <h1> Actividad Evaluable: Entorno Cliente <br> </h1>
+
+    <div id="principal">
+    <h3 id="enunciado">
+        Si quieres ver el contenido de la actividad evaluable pulsa el botón <i>"Ver enunciado"<i> <br>
+        <input type="button" name="botonEnunciado" value="Ver enunciado" onclick="verEnunciado()"><br>
+    </h3>
+
+    <h3 id="resolucion">
+        Si quieres ver la resolucion de la actividad pulsa el botón <i>"Ver enunciado"<i> <br>
+        <input type="button" name="botonResolucion" value="Ver resolucion" onclick="verResolucion()"><br>
+    </h3>
+
+    <h3 id="actividad1">
+        Si quieres ver el código de la actividad 1 pulsa el botón <i>"Actividad 1"<i> </h3>
+        <input type="button" name="botonActividad1" value="Actividad 1" onclick="verActividad1()"><br>
+    </h3>
+
+    <h3>
+        Si quieres ejecutar la actividad 1 pulsa el botón <i>"Ejecutar actividad 1"<i> </h3>
+        <input type="button" name="botonEjecutarActividad1" value="Ejecutar actividad 1" onclick="comprobar()"><br>
+    </h3>
+
+    <br><input type="button" name="ReiniciarBotones" value="Reiniciar botones" onclick="volver()"><br>
+    </div>
+    
+
+</body>
+</html>

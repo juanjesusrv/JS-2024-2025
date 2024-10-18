@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones</title>
+</head>
+<body>
+    <script src="funciones.js"></script>
+
+    <h1>Funciones</h1>
+    <p>En este ejercicio se muestra el uso de funciones en JavaScript.</p>
+    <br>
+
+    <h2>Mostrar un array y debajo su longitud</h2>
+    <p>Se muestra un array y debajo su longitud.</p>
+    <p id="array"></p>
+    <p id="longitud"></p>
+    <script> // Este bloque de codigo crea un array vacio y muestra su longitud
+        var array = []; // Array vacío
+        document.getElementById("array").innerHTML = "Array: " + array + "<br>"; // Muestra el array
+        document.getElementById("longitud").innerHTML = "Longitud: " + longitudArray(array); // Muestra la longitud del array
+    </script>
+
+    <h2>Aumentar el array</h2> 
+    <p>Se añade un elemento al array y se muestra su longitud.</p> 
+    <p id="array2"></p>
+    <p id="longitud2"></p>
+    <input type="button" value="Añadir número" onclick="introducirNum(); // Este bloque de codigo añade un elemento al array y muestra su longitud
+     document.getElementById('array2').innerHTML = 'Array: ' + array + '<br>'; // Muestra el array
+     document.getElementById('longitud2').innerHTML = 'Longitud: ' + longitudArray(array); // Muestra la longitud del array" > 
+
+
+
+    <noscript> <!--  Este bloque de codigo alerta al usuario de un fallo en la ejecución de JavaScript -->
+        El navegador no puede ejecutar scripts que hay en la página. <br>
+        Te recomendamos que <b> actualices tu navegador </b> o que <b> actives JavaScript </b> para poder ver la página correctamente.
+    </noscript>
+    
+</body>
+</html>

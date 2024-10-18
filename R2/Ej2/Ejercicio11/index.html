@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+    <script src="./logica.js">
+    </script>
+
+    <noscript> <!--  Este bloque de codigo alerta al usuario de un fallo en la ejecución de JavaScript -->
+        El navegador no puede ejecutar scripts que hay en la página. <br>
+        Te recomendamos que <b> actualices tu navegador </b> o que <b> actives JavaScript </b> para poder ver la página correctamente.
+    </noscript>
+
+    
+    <table style="margin: auto; width: 80%; display: center;">
+        <tr>
+            <th>
+                Entrada
+            </th>
+            <th>
+                Salida
+            </th>
+        </tr>
+        <tr>
+            <td id="entrada1"></td>
+            <td rowspan="2" id="resultado""></td>
+        </tr>
+            <td rowspan="2" id="resultado">
+                <input type="button" name="BotonEjecutar" value="Ejecutar" onclick="ej()">
+            </td>
+        </tr>
+        <tr id="ejecutar">
+            <td>
+                <input type="button" name="BotonReiniciar" value="Reiniciar" onclick="reiniciar()">
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
