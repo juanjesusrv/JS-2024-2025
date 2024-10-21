@@ -11,7 +11,7 @@
 // Iconos 💣 📦 🚩
 
 // Variables globales
-var coordenada = [0, 1];
+var coordenada = [0, 0];
 var tablero = [
     ["📦", "📦", "💣"],
     ["📦", "💣", "📦"],
