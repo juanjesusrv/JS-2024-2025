@@ -11,7 +11,7 @@
 // Iconos 💣 📦 🚩
 
 // Variables globales
-var coordenada = [0, 0];
+var coordenada = pedirCoordenadas();
 var tablero = [
     ["📦", "📦", "💣"],
     ["📦", "💣", "📦"],
@@ -25,19 +25,65 @@ var tableroUsuario = [
 ];
 
 //Mostrar al usuario el tablero con window.alert
+mostrarTablero(tableroUsuario);
 
 
+function pedirCoordenadas() { //Funcion para pedir las coordenadas al usuario y comprobar que son correctas
+    var fila = prompt("Introduce la fila: ");
 
-var fila = prompt("Introduce la fila: ");
+    while (fila < 1 || fila > 3) {
+        fila = prompt("Introduce una fila valida: ");
+    }
 
-while (fila < 1 || fila > 3) {
-    fila = prompt("Introduce una fila valida: ");
+    var columna = prompt("Introduce la columna: ");
+
+    while (columna < 1 || columna > 3) {
+        columna = prompt("Introduce una columna valida: ");
+    }
+
+    coordenada[0] = fila;
+    coordenada[1] = columna;
+
+    return coordenada;
 }
 
-var columna = prompt("Introduce la columna: ");
-
-while (columna < 1 || columna > 3) {
-    columna = prompt("Introduce una columna valida: ");
+function mostrarTablero(tableroUsuario) {
+    var tablero = "";
+    for (var i = 0; i < tableroUsuario.length; i++) {
+        for (var j = 0; j < tableroUsuario[i].length; j++) {
+            tablero += tableroUsuario[i][j] + " ";
+        }
+        tablero += "\n";
+    }
+    alert(tablero);
 }
 
-coordenada[0]
+function abrirCaja(tablero, tableroUsuario, coordenada) {
+    var fila = coordenada[0];
+    var columna = coordenada[1];
+
+    if (tablero[fila - 1][columna - 1] === "💣") {
+        alert("Has perdido");
+    } else {
+        tableroUsuario[fila - 1][columna - 1] = tablero[fila - 1][columna - 1];
+    }
+}
+
+function comprobarTablero(tableroUsuario) {
+    for (var i = 0; i < tableroUsuario.length; i++) {
+        for (var j = 0; j < tableroUsuario[i].length; j++) {
+            if (tableroUsuario[i][j] === "📦") {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function celdaPulsada(tablero, tableroUsuario, coordenada) {
+    abrirCaja(tablero, tableroUsuario, coordenada);
+    mostrarTablero(tableroUsuario);
+    if (comprobarTablero(tableroUsuario)) {
+        alert("Has ganado");
+    }
+}
