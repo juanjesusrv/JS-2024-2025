@@ -3,7 +3,7 @@
 //  2. A continuacion el usuario introducirá una coordenada. Por ejemplo 3,4
 //  3. El programa mostrará si dicha cordenada está vacía o contiene una mina.
 //     Cambiando el tablero por dicha acción.
-//  4. NO SE PUEDEN USAR FUNCIONES.
+
 //  5. No se puede volver a abrir una caja ya abierta.
 //  6. Si el usuario ha encontrado todas las cajas sin minar, mostrará un mensaje de felicitación.
 //  7. Si el usuario ha encontrado una mina, mostrará un mensaje de que ha perdido.
@@ -11,31 +11,39 @@
 // Iconos 💣 📦 🚩
 
 // Variables globales
-var coordenada = pedirCoordenadas();
-var tablero = [
-    ["📦", "📦", "💣"],
-    ["📦", "💣", "📦"],
-    ["📦", "📦", "📦"]
+
+const tablero = [
+    ["A", "A", "B"],
+    ["A", "B", "A"],
+    ["A", "A", "A"]
 ];
 
-var tableroUsuario = [
-    ["📦", "📦", "📦"],
-    ["📦", "📦", "📦"],
-    ["📦", "📦", "📦"]
+let tableroUsuario = [
+    ["C", "C", "C"],
+    ["C", "C", "C"],
+    ["C", "C", "C"]
 ];
 
-//Mostrar al usuario el tablero con window.alert
-mostrarTablero(tableroUsuario);
+
+/** Comenzar el juego*/
+while (!comprobarTablero(tableroUsuario)) {
+    var coordenada = [];
+
+    pedirCoordenadas();
+    celdaPulsada(tablero, tableroUsuario, coordenada);
+
+}
 
 
+//Comprobar si el tablero esta completo
 function pedirCoordenadas() { //Funcion para pedir las coordenadas al usuario y comprobar que son correctas
-    var fila = prompt("Introduce la fila: ");
+    let fila = prompt("Introduce la fila: ");
 
     while (fila < 1 || fila > 3) {
         fila = prompt("Introduce una fila valida: ");
     }
 
-    var columna = prompt("Introduce la columna: ");
+    let columna = prompt("Introduce la columna: ");
 
     while (columna < 1 || columna > 3) {
         columna = prompt("Introduce una columna valida: ");
@@ -47,42 +55,74 @@ function pedirCoordenadas() { //Funcion para pedir las coordenadas al usuario y 
     return coordenada;
 }
 
+/** Función para mostrar el tablero */
 function mostrarTablero(tableroUsuario) {
-    var tablero = "";
+    var tableroAux = "";
     for (var i = 0; i < tableroUsuario.length; i++) {
         for (var j = 0; j < tableroUsuario[i].length; j++) {
-            tablero += tableroUsuario[i][j] + " ";
+            if (tableroUsuario[i][j] === "C") {
+                tableroAux += "📦";
+            } else if (tableroUsuario[i][j] === "A") {
+                tableroAux += "🚩";
+            } else if (tableroUsuario[i][j] === "B") {
+                tableroAux += "💣";
+            }
         }
-        tablero += "\n";
+        tableroAux += "\n";
     }
-    alert(tablero);
+    alert(tableroAux);
 }
 
+/** Función para abrir una caja */
 function abrirCaja(tablero, tableroUsuario, coordenada) {
-    var fila = coordenada[0];
-    var columna = coordenada[1];
+    let filaAux = coordenada[0];
+    let columnaAux = coordenada[1];
 
-    if (tablero[fila - 1][columna - 1] === "💣") {
-        alert("Has perdido");
+    if (tablero[filaAux - 1][columnaAux - 1] === "B") {
+        tableroUsuario[filaAux - 1][columnaAux - 1] = "B";
     } else {
-        tableroUsuario[fila - 1][columna - 1] = tablero[fila - 1][columna - 1];
+        tableroUsuario[filaAux - 1][columnaAux - 1] = "A";
     }
 }
 
+
+/** Función para comprobar si el tablero esta completo */
 function comprobarTablero(tableroUsuario) {
-    for (var i = 0; i < tableroUsuario.length; i++) {
-        for (var j = 0; j < tableroUsuario[i].length; j++) {
-            if (tableroUsuario[i][j] === "📦") {
-                return false;
+
+    for (let i = 0; i < tableroUsuario.length; i++) {
+        for (let j = 0; j < tableroUsuario[i].length; j++) {
+            
+            if (tableroUsuario[i][j] === "B") {
+                alert("Has perdido");
+                return true;
             }
         }
     }
-    return true;
+    return false;
 }
 
+
+/** Función para elegir una celda, coomprobar si es una bomba o no,  mostrat el tablero y por ultimo comprobar si el tablero esta completo */
 function celdaPulsada(tablero, tableroUsuario, coordenada) {
     abrirCaja(tablero, tableroUsuario, coordenada);
     mostrarTablero(tableroUsuario);
+}
+
+function pintarHTML() {
+    let tabla = "<table>";
+    for (let i = 0; i < tableroUsuario.length; i++) {
+        tabla += "<tr>";
+        for (let j = 0; j < tableroUsuario[i].length; j++) {
+            tabla += "<td>" + tableroUsuario[i][j] + "</td>";
+        }
+        tabla += "</tr>";
+    }
+    tabla += "</table>";
+    document.getElementById("tablero").innerHTML = tabla;
+}
+
+function actualizarHTML() {
+    pintarHTML();
     if (comprobarTablero(tableroUsuario)) {
         alert("Has ganado");
     }
